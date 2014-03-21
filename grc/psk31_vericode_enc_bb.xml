@@ -27,7 +27,6 @@
     <name>in</name>
     <type>byte</type>
   </sink>
-  <!-- e.g. int, float, complex, byte, short, xxx_vector, ...-->
 
   <!-- Make one 'source' node per output. Sub-nodes:
        * name (an identifier for the GUI)
