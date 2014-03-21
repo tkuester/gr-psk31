@@ -32,8 +32,18 @@ class qa_vericode_enc_bb (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-        src_data = (3, 4, 5, 2, 3) * 7000
-        expected_result = (3, 4, 5, 2, 3) * 7000
+        src_data = bytearray('hello world')
+        expected_result = (1, 0, 1, 0, 1, 1, 0, 0,    # h
+                           1, 1, 0, 0,                # e
+                           1, 1, 0, 1, 1, 0, 0,       # l
+                           1, 1, 0, 1, 1, 0, 0,       # l
+                           1, 1, 1, 0, 0,             # o
+                           1, 0, 0,                   # ' '
+                           1, 1, 0, 1, 0, 1, 1, 0, 0, # w
+                           1, 1, 1, 0, 0,             # o
+                           1, 0, 1, 0, 1, 0, 0,       # r
+                           1, 1, 0, 1, 1, 0, 0,       # l
+                           1, 0, 1, 1, 0, 1, 0, 0)    # d
 
         src = blocks.vector_source_b(src_data)
         venc = vericode_enc_bb()
