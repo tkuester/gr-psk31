@@ -32,9 +32,19 @@ class qa_vericode_enc_bb (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-        # set up fg
-        self.tb.run ()
-        # check data
+        src_data = (3, 4, 5, 2, 3) * 7000
+        expected_result = (3, 4, 5, 2, 3) * 7000
+
+        src = blocks.vector_source_b(src_data)
+        venc = vericode_enc_bb()
+        dst = blocks.vector_sink_b()
+
+        self.tb.connect(src, venc)
+        self.tb.connect(venc, dst)
+        self.tb.run()
+
+        result_data = dst.data()
+        self.assertEqual(expected_result, result_data)
 
 
 if __name__ == '__main__':
