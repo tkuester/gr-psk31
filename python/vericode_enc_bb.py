@@ -153,13 +153,13 @@ VARICODE = [
     [1, 1, 1, 0, 1, 1, 0, 1, 0, 1]
 ]
 
-class vericode_enc_bb(gr.basic_block):
+class varicode_enc_bb(gr.basic_block):
     """
-    docstring for block vericode_enc_bb
+    docstring for block varicode_enc_bb
     """
     def __init__(self):
         gr.basic_block.__init__(self,
-            name="vericode_enc_bb",
+            name="varicode_enc_bb",
             in_sig=[numpy.byte],
             out_sig=[numpy.byte])
 

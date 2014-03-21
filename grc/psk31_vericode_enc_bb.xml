@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>vericode_enc_bb</name>
-  <key>psk31_vericode_enc_bb</key>
+  <name>varicode_enc_bb</name>
+  <key>psk31_varicode_enc_bb</key>
   <category>psk31</category>
   <import>import psk31</import>
-  <make>psk31.vericode_enc_bb()</make>
+  <make>psk31.varicode_enc_bb()</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name

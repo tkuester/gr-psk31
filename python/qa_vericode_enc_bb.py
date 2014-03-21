@@ -21,9 +21,9 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from vericode_enc_bb import vericode_enc_bb
+from varicode_enc_bb import varicode_enc_bb
 
-class qa_vericode_enc_bb (gr_unittest.TestCase):
+class qa_varicode_enc_bb (gr_unittest.TestCase):
 
     def setUp (self):
         self.tb = gr.top_block ()
@@ -46,7 +46,7 @@ class qa_vericode_enc_bb (gr_unittest.TestCase):
                            1, 0, 1, 1, 0, 1, 0, 0)    # d
 
         src = blocks.vector_source_b(src_data)
-        venc = vericode_enc_bb()
+        venc = varicode_enc_bb()
         dst = blocks.vector_sink_b()
 
         self.tb.connect(src, venc)
@@ -58,4 +58,4 @@ class qa_vericode_enc_bb (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_vericode_enc_bb, "qa_vericode_enc_bb.xml")
+    gr_unittest.run(qa_varicode_enc_bb, "qa_varicode_enc_bb.xml")

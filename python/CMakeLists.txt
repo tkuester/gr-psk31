@@ -31,7 +31,7 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    vericode_enc_bb.py DESTINATION ${GR_PYTHON_DIR}/psk31
+    varicode_enc_bb.py DESTINATION ${GR_PYTHON_DIR}/psk31
 )
 
 ########################################################################
@@ -41,4 +41,4 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-psk31)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_vericode_enc_bb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vericode_enc_bb.py)
+GR_ADD_TEST(qa_varicode_enc_bb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_varicode_enc_bb.py)
