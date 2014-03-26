@@ -56,6 +56,21 @@ class qa_varicode_enc_bb (gr_unittest.TestCase):
         result_data = dst.data()
         self.assertEqual(expected_result, result_data)
 
+    def test_002_t (self):
+        src_data = bytearray([' '] * 100000)
+        expected_result = (1, 0, 0) * 100000
+
+        src = blocks.vector_source_b(src_data)
+        venc = varicode_enc_bb()
+        dst = blocks.vector_sink_b()
+
+        self.tb.connect(src, venc)
+        self.tb.connect(venc, dst)
+        self.tb.run()
+
+        result_data = dst.data()
+        self.assertEqual(expected_result, result_data)
+
 
 if __name__ == '__main__':
     gr_unittest.run(qa_varicode_enc_bb, "qa_varicode_enc_bb.xml")

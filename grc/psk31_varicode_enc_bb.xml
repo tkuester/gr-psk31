@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <block>
-  <name>varicode_enc_bb</name>
+  <name>Varicode Encoder</name>
   <key>psk31_varicode_enc_bb</key>
   <category>psk31</category>
   <import>import psk31</import>

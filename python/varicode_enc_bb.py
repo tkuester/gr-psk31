@@ -150,12 +150,27 @@ VARICODE = [
     [1, 1, 0, 1, 1, 1, 0, 1, 1], 
     [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
     [1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
-    [1, 1, 1, 0, 1, 1, 0, 1, 0, 1]
+    [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
 class varicode_enc_bb(gr.basic_block):
     """
-    docstring for block varicode_enc_bb
+    Encodes an 8-bit byte (ie: characters) into a serial stream of
+    bits mapping to the variable length code from the PSK31 spec,
+    and attaches the two bit separator (00).
+
+    For example: 't' (0x74) maps to varicode 101. This block will
+    output the following five bytes (representative of bits):
+    [1, 0, 1, 0, 0]. To ensure interoperability between GNU Radio
+    and other PSK31 software, the bits are inverted (so they actually
+    come out as [0, 1, 0, 1, 1].
+
+    If you are using GNU Radio's "PSK Mod" block (3.7.3), you should
+    use a bit->byte packer, with K=8.
+
+    http://www.arrl.org/psk31-spec
     """
     def __init__(self):
         gr.basic_block.__init__(self,
@@ -175,7 +190,6 @@ class varicode_enc_bb(gr.basic_block):
         for i, val in enumerate(input_items[0]):
             val = numpy.uint8(val)
             code = VARICODE[val]
-            print '"%c" maps to' % val, code
 
             if (out_idx + len(code) + 2) > len(output_items[0]):
                 break
@@ -183,15 +197,16 @@ class varicode_enc_bb(gr.basic_block):
             consumed += 1
 
             for bit in code:
-                output_items[0][out_idx] = bit
+                if bit == 1:
+                    output_items[0][out_idx] = 0
+                else:
+                    output_items[0][out_idx] = 1
                 out_idx += 1
 
-            output_items[0][out_idx] = 0
-            output_items[0][out_idx + 1] = 0
+            output_items[0][out_idx] = 1
+            output_items[0][out_idx + 1] = 1
             out_idx += 2
 
         self.consume(0, consumed)
 
-        print 'Rendered %d items' % out_idx
-        print '----'
         return out_idx

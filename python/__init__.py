@@ -42,7 +42,7 @@ if _RTLD_GLOBAL != 0:
 
 
 # import swig generated symbols into the psk31 namespace
-from psk31_swig import *
+#from psk31_swig import *
 
 # import any pure python here
 from varicode_enc_bb import varicode_enc_bb
