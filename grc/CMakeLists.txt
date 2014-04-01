@@ -18,5 +18,7 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    psk31_varicode_enc_bb.xml DESTINATION share/gnuradio/grc/blocks
+    psk31_varicode_enc_bb.xml
+    psk31_varicode_enc_b.xml
+    psk31_varicode_dec_b.xml DESTINATION share/gnuradio/grc/blocks
 )

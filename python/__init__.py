@@ -46,6 +46,8 @@ if _RTLD_GLOBAL != 0:
 
 # import any pure python here
 from varicode_enc_bb import varicode_enc_bb
+from varicode_enc_b import varicode_enc_b
+from varicode_dec_b import varicode_dec_b
 #
 
 # ----------------------------------------------------------------
